@@ -1,0 +1,44 @@
+/**
+ * 配置文件，配置信息包含：
+ * 1、公共版本号
+ * 2、常用的三方库
+ * author: user_zf
+ * date: 2018.08.21
+ */
+
+ext {
+    //Android配置版本号 和 一些公共库组的版本号(两个或两个以上的库用到的相同版本号)
+    versions = [
+
+            compileSdkVersion: 26,        //用来编译项目的Sdk版本号
+            buildToolsVersion: '27.0.3',  //构建工具版本号
+            minSdkVersion    : 15,        //支持的最低Sdk版本号
+            targetSdkVersion : 26,        //目标Sdk版本号
+
+            kotlin_version   : '1.2.51',  //kotlin相关库的版本号
+            support_version  : '27.1.1'   //Android兼容包版本号
+    ]
+
+    //Android项目常用的 系统库 和 三方库
+    libs = [
+            jimu_component_lib       : 'com.github.jimu:componentlib:1.3.2-alpha',                             //积木组件库(一个比较彻底的组件化方案)，定义了Router和UiRouter
+            jimu_annotation_processor: 'com.github.jimu:router-anno-compiler:1.0.1',                           //积木注解解析库，用来解析RouterNode和Autowired
+
+            kotlin_stdlib_jdk8       : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin_version}",   //kotlin 标准库 jdk8
+            kotlin_stdlib            : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin_version}",        //kotlin 标准库
+            kotlin_anko              : 'org.jetbrains.anko:anko:0.10.5',                                       //kotlin 扩展库anko
+
+            support_annotation       : "com.android.support:support-annotations:${versions.support_version}",  //Android 注解库
+            supportv7                : "com.android.support:appcompat-v7:${versions.support_version}",         //Android V7兼容库
+            supportv7_recyclerview   : "com.android.support:recyclerview-v7:${versions.support_version}",      //Android RecyclerView
+            support_design           : "com.android.support:design:${versions.support_version}",               //Android Ui库Material Design
+            supoortv7_cardview       : "com.android.support:cardview-v7:${versions.support_version}",          //Android CardView，可以做圆角、阴影效果
+            constraint               : 'com.android.support.constraint:constraint-layout:1.1.2',               //Android 约束布局
+            supportv4                : 'com.android.support:support-v4:25.3.1',                                //Android V4兼容库
+            rxjava                   : 'io.reactivex:rxjava:1.1.6',                                            //Rxjava标准库
+            //rxandroid                : 'io.reactivex:rxandroid:1.2.1',                                         //Rxandroid库
+            //rxbinding                : 'com.jakewharton.rxbinding:rxbinding:0.4.0'                             //Rxbinding库
+            smart_refresh_layout     : 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3',                     //流行的刷新控件
+            logger                   : 'com.orhanobut:logger:2.2.0',                                           //一款流行的日志控件
+    ]
+}
