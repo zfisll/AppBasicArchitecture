@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlTop"
+    android:layout_width="match_parent"
+    android:layout_height="49dp"
+    android:background="#FFFFFF">
+    <!-- 左侧返回按钮 -->
+    <ImageView
+        android:id="@+id/ivLeft"
+        android:layout_width="wrap_content"
+        android:paddingLeft="17dp"
+        android:paddingRight="9dp"
+        android:layout_height="match_parent"
+        android:scaleType="center"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/tvLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingLeft="17dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/ui_primary"
+        android:textSize="16dp"
+        android:visibility="gone"
+        tools:text="取消"
+        tools:visibility="visible" />
+
+    <!-- 页面标题 -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        tools:text="港股指数"
+        tools:visibility="visible" />
+
+    <!-- 右侧功能按钮 -->
+    <TextView
+        android:id="@+id/tvButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:paddingLeft="9dp"
+        android:paddingRight="15dp"
+        android:textColor="#6D6D72"
+        android:textSize="16dp"
+        android:visibility="gone"
+        tools:text="取消"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/ivButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="9dp"
+        android:paddingRight="15dp"
+        android:src="@drawable/ic_search"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="#DDDDDD" />
+
+</RelativeLayout>

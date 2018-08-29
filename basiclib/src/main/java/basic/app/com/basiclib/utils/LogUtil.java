@@ -9,6 +9,8 @@ import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 
+import basic.app.com.basiclib.logger.LogcatStrategy;
+
 
 /**
  * author : user_zf
@@ -34,8 +36,9 @@ public class LogUtil {
      */
     private static void configConsoleLog() {
         FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
-                .showThreadInfo(false)    //不显示所在线程
-                .methodCount(1)           //调用方法层级
+                .showThreadInfo(false)             //不显示所在线程
+                .methodCount(1)                    //调用方法层级
+                .logStrategy(new LogcatStrategy()) //设置自己的strategy，解决LogcatLogStrategy格式不对齐问题
                 .build();
         Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
     }
@@ -99,5 +102,12 @@ public class LogUtil {
         } else {
             Logger.t("debug").d(ObjectParser.parseObj(message));
         }
+    }
+
+    public static void json(String json) {
+        if (!isInited) {
+            return;
+        }
+        Logger.json(json);
     }
 }

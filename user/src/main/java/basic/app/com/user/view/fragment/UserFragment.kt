@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import basic.app.com.user.R
 import com.luojilab.component.componentlib.router.ui.UIRouter
-import kotlinx.android.synthetic.main.fragment_user.*
+import kotlinx.android.synthetic.main.user_fragment_user.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 /**
@@ -30,7 +30,7 @@ class UserFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_user, container, false)
+        return inflater.inflate(R.layout.user_fragment_user, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

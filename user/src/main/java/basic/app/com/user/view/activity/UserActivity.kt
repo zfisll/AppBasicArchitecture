@@ -21,7 +21,7 @@ class UserActivity : Activity() {
         //解析Autowired对应的属性内容
         AutowiredService.Factory.getSingletonImpl().autowire(this)
 
-        setContentView(R.layout.activity_user)
+        setContentView(R.layout.user_activity_user)
         val ft = fragmentManager.beginTransaction()
         ft.replace(R.id.flContainer, UserFragment.newFragment(mUser.userName, mUser.userAge, mUser.userHobby))
         ft.commitAllowingStateLoss()

@@ -4,6 +4,10 @@ import android.app.Application;
 
 import com.luojilab.component.componentlib.router.ui.UIRouter;
 
+import basic.app.com.BuildConfig;
+import basic.app.com.basiclib.utils.AppUtil;
+import basic.app.com.basiclib.utils.LogUtil;
+
 /**
  * author : user_zf
  * date : 2018/8/22
@@ -15,5 +19,7 @@ public class BasicApplication extends Application {
         super.onCreate();
         //注册UiRouter
         UIRouter.getInstance().registerUI("app");
+        AppUtil.setApp(this);
+        LogUtil.configLog(BuildConfig.DEBUG, getApplicationContext());
     }
 }

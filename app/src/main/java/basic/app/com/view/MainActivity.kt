@@ -13,7 +13,7 @@ import com.luojilab.router.facade.annotation.RouteNode
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
-@RouteNode(path="/main", desc = "应用主页")
+@RouteNode(path = "/main", desc = "应用主页")
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +35,9 @@ class MainActivity : AppCompatActivity() {
             val bundle = Bundle()
             bundle.putString("mUser", JsonService.Factory.getSingletonImpl().toJsonString(user))
             UIRouter.getInstance().openUri(this@MainActivity, "DDComp://user/info", bundle)
+        }
+        btnLogin.onClick {
+            UIRouter.getInstance().openUri(this@MainActivity, "DDComp://user/login", Bundle())
         }
     }
 }

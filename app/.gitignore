@@ -1,5 +1,5 @@
 /build
 /src/androidTest
-/test
+/src/test
 *.iml
 /libs

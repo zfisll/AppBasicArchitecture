@@ -16,10 +16,17 @@
         android:layout_toRightOf="@id/btnLoad"
         android:text="跳转到UserActivity" />
 
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnLoad"
+        android:text="去登录" />
+
     <FrameLayout
         android:id="@+id/flContainer"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_below="@id/btnLoad" />
+        android:layout_below="@id/btnLogin" />
 
 </RelativeLayout>

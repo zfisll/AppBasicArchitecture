@@ -1,8 +1,11 @@
 package basic.app.com.basiclib.utils;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -54,6 +57,20 @@ public class ViewUtil {
             }
         } else {
             return View.generateViewId();
+        }
+    }
+
+    /**
+     * 关闭系统的软键盘
+     * @param activity 指定Activity
+     */
+    public static void dismissSoftKeyboard(Activity activity)
+    {
+        View view = activity.getWindow().peekDecorView();
+        if (view != null && view.getWindowToken() != null)
+        {
+            InputMethodManager inputmanger = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 }

@@ -10,20 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bluestone.common.baseclass.BasePresenter;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import basic.app.com.basiclib.utils.ClassUtil;
 import basic.app.com.basiclib.utils.CollectionUtil;
+import basic.app.com.basiclib.utils.LogUtil;
 
 
 /**
  * Created by dylan on 5/8/17.
  * 基础Fragment，实现了View和Presenter的绑定以及一些基础UI样式配置
  */
-public abstract class UIBaseFragment<T extends BasePresenter> extends Fragment
+public abstract class UIBaseFragment<T extends BasePresenter> extends RxFragmentv4
         implements IStateView, IUIBaseConfig, IBaseView, DialogInterface.OnDismissListener {
 
     public boolean isInitDone = false; //是否初始化完成
@@ -184,7 +183,7 @@ public abstract class UIBaseFragment<T extends BasePresenter> extends Fragment
      * 可见回调
      */
     public void onVisible() {
-        LogUtil.info(getClass().getSimpleName() + " onVisible");
+        LogUtil.i(getClass().getSimpleName() + " onVisible");
         visibleFlag = true;
         //如果开启了懒加载，并同时满足初始化完成以及未触发过懒加载，就去执行加载数据动作
         if (isLazyLoadEnable() && !isLazyLoadTricked && isInitDone) {
@@ -214,7 +213,7 @@ public abstract class UIBaseFragment<T extends BasePresenter> extends Fragment
      * 不可见回调
      */
     public void onInvisible() {
-        LogUtil.info(getClass().getSimpleName() + " onInvisible");
+        LogUtil.i(getClass().getSimpleName() + " onInvisible");
         visibleFlag = false;
         // 遍历子fragment，如果子fragment处于可见状态，则手动触发回调
         if (!CollectionUtil.isEmpty(mFragments)) {
@@ -259,7 +258,6 @@ public abstract class UIBaseFragment<T extends BasePresenter> extends Fragment
     }
 
 
-
     @Override
     public View getDataView() {
         if (mDataView == null && getContext() != null) {
@@ -283,7 +281,6 @@ public abstract class UIBaseFragment<T extends BasePresenter> extends Fragment
     public boolean isLazyLoadEnable() {
         return false;
     }
-
 
 
     @Override
@@ -317,7 +314,7 @@ public abstract class UIBaseFragment<T extends BasePresenter> extends Fragment
                 presenter.view = this;
             }
         } catch (Exception e) {
-            LogUtil.error(e,e.getMessage());
+            LogUtil.e(e, e.getMessage());
         }
     }
 

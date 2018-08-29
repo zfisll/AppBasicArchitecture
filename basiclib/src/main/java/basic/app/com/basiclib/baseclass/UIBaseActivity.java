@@ -3,11 +3,10 @@ package basic.app.com.basiclib.baseclass;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.bluestone.common.baseclass.BasePresenter;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import basic.app.com.basiclib.utils.ClassUtil;
 
@@ -17,7 +16,7 @@ import basic.app.com.basiclib.utils.ClassUtil;
  * date : 2018/8/24
  * desc : 基础Activity，实现了View和Presenter的绑定以及一些基础UI样式配置
  */
-public abstract class UIBaseActivity<T extends BasePresenter> extends AppCompatActivity
+public abstract class UIBaseActivity<T extends BasePresenter> extends RxAppCompatActivity
         implements IStateView, IUIBaseConfig, IBaseView {
 
     private UIHelper mHelper; //ui布局helper
@@ -105,6 +104,7 @@ public abstract class UIBaseActivity<T extends BasePresenter> extends AppCompatA
             presenter = (T) ClassUtil.getActualTypeClass(UIBaseActivity.this.getClass(), 0).newInstance();
             if (presenter != null) {
                 presenter.view = this;
+                presenter.provider = this;
             }
         } catch (Exception e) {
             /* no-op */
@@ -138,14 +138,6 @@ public abstract class UIBaseActivity<T extends BasePresenter> extends AppCompatA
             mProgressDialog.dismiss();
         }
 
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (presenter != null) {
-            presenter.cancelSubscription();
-        }
     }
 
     /**
