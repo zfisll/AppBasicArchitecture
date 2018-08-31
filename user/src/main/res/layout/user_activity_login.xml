@@ -80,17 +80,6 @@
         android:text="登录"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/btnRxjava"
-        app:layout_constraintTop_toBottomOf="@id/tvCodeTitle" />
-
-    <Button
-        android:id="@+id/btnRxjava"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="internal"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintLeft_toRightOf="@id/btnLogin"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvCodeTitle" />
 

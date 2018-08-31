@@ -1,63 +1,86 @@
 package basic.app.com.user.view.fragment
 
-import android.app.Fragment
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.text.TextUtils
 import android.view.View
-import android.view.ViewGroup
+import basic.app.com.basiclib.baseclass.BasePresenter
+import basic.app.com.basiclib.utils.FILE_NAME_USER_INFO
+import basic.app.com.basiclib.utils.getSharedPreferencesValue
+import basic.app.com.basiclib.utils.imageloader.ImageLoaderUtil
+import basic.app.com.basicres.basicclass.BaseFragment
 import basic.app.com.user.R
 import com.luojilab.component.componentlib.router.ui.UIRouter
+import com.trello.rxlifecycle2.android.FragmentEvent
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.user_fragment_user.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import java.util.concurrent.TimeUnit
 
 /**
  * author : user_zf
  * date : 2018/8/22
  * desc : 展示用户信息页面
  */
-class UserFragment : Fragment() {
+class UserFragment : BaseFragment<BasePresenter<*>>() {
 
-    private var mUserName: String? = null
-    private var mUserAge: Int? = null
-    private var mUserHobby: String? = null
+    override fun getLayoutResource() = R.layout.user_fragment_user
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mUserName = arguments?.getString(USER_NAME)
-        mUserAge = arguments?.getInt(USER_AGE)
-        mUserHobby = arguments?.getString(USER_HOBBY)
+    override fun initLayout(view: View?) {
+        super.initLayout(view)
+
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.user_fragment_user, container, false)
+    override fun onVisible() {
+        super.onVisible()
+        //每次可见时刷新页面状态
+        onLoadData()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        tvName.text = mUserName
-        tvAge.text = mUserAge.toString()
-        tvHobby.text = mUserHobby
-
-        tvGotoMain.onClick {
-            UIRouter.getInstance().openUri(activity, "DDComp://app/main", null)
+    private fun checkPageStatus() {
+        val session = getSharedPreferencesValue("session", String::class.java, "", FILE_NAME_USER_INFO) as String
+        if (TextUtils.isEmpty(session)) {
+            rlInfo.visibility = View.GONE
+            btnLogin.visibility = View.VISIBLE
+            btnLogin.onClick {
+                UIRouter.getInstance().openUri(activity, "DDComp://user/login", Bundle())
+            }
+        } else {
+            btnLogin.visibility = View.GONE
+            rlInfo.visibility = View.VISIBLE
+            //展示用户信息
+            val userName = getSharedPreferencesValue("userName", String::class.java, "", FILE_NAME_USER_INFO) as String
+            val userId = getSharedPreferencesValue("userId", String::class.java, "", FILE_NAME_USER_INFO) as String
+            val phone = getSharedPreferencesValue("phone", String::class.java, "", FILE_NAME_USER_INFO) as String
+            val email = getSharedPreferencesValue("email", String::class.java, "", FILE_NAME_USER_INFO) as String
+            val avatar = getSharedPreferencesValue("avatar", String::class.java, "", FILE_NAME_USER_INFO) as String
+            tvName.text = userName
+            tvId.text = userId
+            tvPhone.text = phone
+            tvEmail.text = email
+            ImageLoaderUtil.loadCircleImage(avatar, R.drawable.ic_launcher_background, ivAvatar)
         }
+        //1秒钟之后还原刷新状态
+        Observable.timer(1, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(bindUntilEvent(FragmentEvent.DESTROY_VIEW))
+                .subscribe {
+                    resetRefreshStatus()
+                }
+    }
+
+    override fun isRefreshEnable() = true
+
+    override fun onLoadData() {
+        checkPageStatus()
     }
 
     companion object {
-        private const val USER_NAME = "USER_NAME"
-        private const val USER_AGE = "USER_AGE"
-        private const val USER_HOBBY = "USER_HOBBY"
-
         @JvmStatic
-        fun newFragment(userName: String, userAge: Int, userHobby: String): UserFragment {
-            val bundle = Bundle()
-            bundle.putString(USER_NAME, userName)
-            bundle.putInt(USER_AGE, userAge)
-            bundle.putString(USER_HOBBY, userHobby)
-            val fragment = UserFragment()
-            fragment.arguments = bundle
-            return fragment
+        fun newFragment(): UserFragment {
+            return UserFragment()
         }
     }
 }

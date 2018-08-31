@@ -1,4 +1,4 @@
-package basic.app.com.basiclib.logger;
+package basic.app.com.basiclib.utils.logger;
 
 import android.text.TextUtils;
 import android.util.Log;

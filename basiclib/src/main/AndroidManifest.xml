@@ -1,2 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="basic.app.com.basiclib" />
+    package="basic.app.com.basiclib">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+</manifest>

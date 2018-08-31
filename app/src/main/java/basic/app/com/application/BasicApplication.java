@@ -6,7 +6,7 @@ import com.luojilab.component.componentlib.router.ui.UIRouter;
 
 import basic.app.com.BuildConfig;
 import basic.app.com.basiclib.utils.AppUtil;
-import basic.app.com.basiclib.utils.LogUtil;
+import basic.app.com.basiclib.utils.logger.LogUtil;
 
 /**
  * author : user_zf

@@ -1,7 +1,7 @@
 package basic.app.com.user.presenter
 
 import basic.app.com.basiclib.baseclass.BasePresenter
-import basic.app.com.basiclib.utils.LogUtil
+import basic.app.com.basiclib.utils.logger.LogUtil
 import basic.app.com.user.model.UserModel
 import basic.app.com.user.model.bean.UserBean
 import basic.app.com.user.view.ILoginView
@@ -28,11 +28,11 @@ class LoginPresenter : BasePresenter<ILoginView>() {
                 .compose(provider.bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(object : Observer<UserBean> {
                     override fun onComplete() {
-                        LogUtil.i("zf_tag", "login complete")
+                        basic.app.com.basiclib.utils.logger.LogUtil.i("zf_tag", "login complete")
                     }
 
                     override fun onSubscribe(d: Disposable) {
-                        LogUtil.i("zf_tag", "login onSubscribe")
+                        basic.app.com.basiclib.utils.logger.LogUtil.i("zf_tag", "login onSubscribe")
                     }
 
                     override fun onNext(t: UserBean) {

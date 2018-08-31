@@ -21,6 +21,7 @@ import java.net.NetworkInterface;
 import java.util.Enumeration;
 
 import basic.app.com.basiclib.R;
+import basic.app.com.basiclib.utils.logger.LogUtil;
 
 /**
  * author : user_zf
@@ -49,7 +50,6 @@ public class DeviceUtil {
     public static String getMacAddress(Context context) {
         try {
             WifiManager wifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-            // TODO: 2018/8/28 加上权限请求
             WifiInfo info = wifi.getConnectionInfo();
             return info.getMacAddress() != null ? info.getMacAddress() : "";
         } catch (Exception e) {
@@ -81,7 +81,6 @@ public class DeviceUtil {
     private static String getWifiIpAddress(Context context) {
         try {
             WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-            // TODO: 2018/8/28 加上权限求情
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             // 获取32位整型IP地址
             int ipAddress = wifiInfo.getIpAddress();
@@ -124,10 +123,7 @@ public class DeviceUtil {
      * 判断当前是否连接wifi
      */
     public static boolean isWifiConnected(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        // TODO: 2018/8/28 加上权限请求
-        NetworkInfo wifiNetworkInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        return wifiNetworkInfo.isConnected();
+        return getAPNType(context) == 1;
     }
 
     /**
@@ -217,7 +213,7 @@ public class DeviceUtil {
         } catch (PackageManager.NameNotFoundException e) {
             LogUtil.e(e, e.getMessage());
             e.printStackTrace();
-            return context.getString(R.string.unknow_version);
+            return context.getString(R.string.lib_unknow_version);
         }
     }
 
@@ -331,5 +327,26 @@ public class DeviceUtil {
             applicationInfo = null;
         }
         return (String) packageManager.getApplicationLabel(applicationInfo);
+    }
+
+    /**
+     * 获取当前设备Android版本号
+     */
+    public static int getTargetSdkVersion(Context context) {
+        try {
+            final PackageInfo info = context.getPackageManager().getPackageInfo(
+                    context.getPackageName(), 0);
+            return info.applicationInfo.targetSdkVersion;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    /**
+     * 获取应用包名
+     */
+    public static String getPackageName() {
+        return AppUtil.getApp().getApplicationContext().getPackageName();
     }
 }

@@ -15,7 +15,7 @@ import java.util.List;
 
 import basic.app.com.basiclib.utils.ClassUtil;
 import basic.app.com.basiclib.utils.CollectionUtil;
-import basic.app.com.basiclib.utils.LogUtil;
+import basic.app.com.basiclib.utils.logger.LogUtil;
 
 
 /**

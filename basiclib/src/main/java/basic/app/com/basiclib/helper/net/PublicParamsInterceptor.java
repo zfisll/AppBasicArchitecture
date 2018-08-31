@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.Map;
 
-import basic.app.com.basiclib.utils.LogUtil;
+import basic.app.com.basiclib.utils.logger.LogUtil;
 import okhttp3.FormBody;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;

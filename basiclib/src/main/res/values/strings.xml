@@ -1,4 +1,7 @@
 <resources>
-    <string name="user_app_name">公共资源库</string>
-    <string name="unknow_version">未知版本</string>
+    <string name="lib_app_name">公共资源库</string>
+    <string name="lib_unknow_version">未知版本</string>
+    <string name="lib_need_permission">您所执行的操作需要%1$s权限，请前往应用设置中打开</string>
+    <string name="lib_go_setting">去设置</string>
+    <string name="lib_cancel">取消</string>
 </resources>

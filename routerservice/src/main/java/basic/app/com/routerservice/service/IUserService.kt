@@ -1,6 +1,6 @@
 package basic.app.com.routerservice.service
 
-import android.app.Fragment
+import android.support.v4.app.Fragment
 
 /**
  * author : user_zf
@@ -11,5 +11,5 @@ interface IUserService {
     /**
      * 获取用户信息Fragment
      */
-    fun getUserFragment(userName: String, age: Int, hobby: String): Fragment
+    fun getUserFragment(): Fragment
 }

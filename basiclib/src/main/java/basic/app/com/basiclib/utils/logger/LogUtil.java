@@ -1,5 +1,6 @@
-package basic.app.com.basiclib.utils;
+package basic.app.com.basiclib.utils.logger;
 
+import android.Manifest;
 import android.content.Context;
 
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -9,7 +10,8 @@ import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 
-import basic.app.com.basiclib.logger.LogcatStrategy;
+import basic.app.com.basiclib.utils.ObjectParser;
+import basic.app.com.basiclib.utils.PermissionUtil;
 
 
 /**
@@ -49,9 +51,7 @@ public class LogUtil {
      * @param isDevelop 开发模式为true，测试和上线模式为false
      */
     public static void configLog(boolean isDevelop, Context context) {
-        //check if has permission
-        //todo 此处需要检查是否有写存储权限
-//        boolean hasPermission = PermissionUtils.selfPermissionGranted(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        boolean hasPermission = PermissionUtil.isPermissionGranted(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (!false || isDevelop) {
             configConsoleLog();
             isInited = true;

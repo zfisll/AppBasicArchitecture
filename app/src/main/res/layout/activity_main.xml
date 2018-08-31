@@ -3,30 +3,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnLoad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="装在UserFragment" />
-
-    <Button
-        android:id="@+id/btnJump"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/btnLoad"
-        android:text="跳转到UserActivity" />
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnLoad"
-        android:text="去登录" />
-
-    <FrameLayout
-        android:id="@+id/flContainer"
+    <RadioGroup
+        android:id="@+id/rgTab"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_below="@id/btnLogin" />
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbStock"
+            style="@style/MainBottomTab"
+            android:checked="true"
+            android:drawableTop="@drawable/sl_bottom_tab_stock"
+            android:text="Tab1" />
+
+        <RadioButton
+            android:id="@+id/rbFinancial"
+            style="@style/MainBottomTab"
+            android:drawableTop="@drawable/sl_bottom_tab_financial"
+            android:text="Tab2" />
+
+        <RadioButton
+            android:id="@+id/rbTrade"
+            style="@style/MainBottomTab"
+            android:drawableTop="@drawable/sl_bottom_tab_trade"
+            android:text="Tab3" />
+
+        <RadioButton
+            android:id="@+id/rbInfo"
+            style="@style/MainBottomTab"
+            android:drawableTop="@drawable/sl_bottom_tab_info"
+            android:text="Tab4" />
+
+        <RadioButton
+            android:id="@+id/rbMine"
+            style="@style/MainBottomTab"
+            android:drawableTop="@drawable/sl_bottom_tab_mine"
+            android:text="Tab5" />
+    </RadioGroup>
+
+    <View
+        android:id="@+id/vDivider"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_above="@id/rgTab"
+        android:background="@color/ui_divider_primary" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/vDivider" />
 
 </RelativeLayout>

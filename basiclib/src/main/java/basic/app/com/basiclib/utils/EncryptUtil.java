@@ -3,6 +3,8 @@ package basic.app.com.basiclib.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import basic.app.com.basiclib.utils.logger.LogUtil;
+
 /**
  * author : user_zf
  * date : 2018/8/29

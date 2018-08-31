@@ -3,6 +3,7 @@ package basic.app.com.basiclib.utils;
 
 import basic.app.com.basiclib.BuildConfig;
 import basic.app.com.basiclib.helper.net.HttpPerformanceInterceptor;
+import basic.app.com.basiclib.utils.logger.LogUtil;
 import okhttp3.Interceptor;
 
 /**

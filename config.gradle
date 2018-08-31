@@ -20,7 +20,8 @@ ext {
             retrofit_version   : '2.4.0',   //Retrofit版本号
             okhttp_version     : '3.11.0',  //Okhttp版本号
             butterknife_version: '8.4.0',   //butterknife版本号
-            rxlifecycle_version: '2.2.2'    //rxlifecycle版本号
+            rxlifecycle_version: '2.2.2',   //rxlifecycle版本号
+            glide_version      : '4.8.0',   //图片加载工具Glide的版本号
     ]
 
     //Android项目常用的 系统库 和 三方库
@@ -51,9 +52,13 @@ ext {
             okhttp_loggin_interceptor       : "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_version}",             //日志拦截器
             smart_refresh_layout            : 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3',                                //流行的刷新控件
             logger                          : 'com.orhanobut:logger:2.2.0',                                                      //一款流行的日志控件
-            eventbus                        : 'org.greenrobot:eventbus:3.1.1',                                                   //解决不同之间的通信（刷新，进行某个操作）
+            eventbus                        : 'org.greenrobot:eventbus:3.1.1',                                                   //解决不同组件之间的通信（刷新，进行某个操作）
             butterknife                     : "com.jakewharton:butterknife:${versions.butterknife_version}",                     //Butterknife标准库
             butterknife_annotation_processor: "com.jakewharton:butterknife-compiler:${versions.butterknife_version}",            //Butterknife注解解析库
             jackson_core                    : 'com.fasterxml.jackson.core:jackson-databind:2.9.5',                               //jackson库
+            glide                           : "com.github.bumptech.glide:glide:${versions.glide_version}",                       //Glide标准库
+            glide_annotation_processor      : "com.github.bumptech.glide:compiler:${versions.glide_version}",                    //Glide注解解析库
+            glide_okhttp                    : "com.github.bumptech.glide:okhttp3-integration:${versions.glide_version}",         //Glide图片处理库
+            multidex                        : 'com.android.support:multidex:1.0.3',                                              //分包，解决方法数超过64k的问题
     ]
 }

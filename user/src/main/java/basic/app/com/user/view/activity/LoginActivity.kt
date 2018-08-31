@@ -2,24 +2,16 @@ package basic.app.com.user.view.activity
 
 import android.text.TextUtils
 import android.view.View
-import basic.app.com.basiclib.utils.EncryptUtil
-import basic.app.com.basiclib.utils.JsonUtil
-import basic.app.com.basiclib.utils.LogUtil
-import basic.app.com.basiclib.utils.ToastUtil
+import basic.app.com.basiclib.utils.*
+import basic.app.com.basiclib.utils.logger.LogUtil
 import basic.app.com.basicres.basicclass.BaseActivity
 import basic.app.com.user.R
 import basic.app.com.user.model.bean.UserBean
 import basic.app.com.user.presenter.LoginPresenter
 import basic.app.com.user.view.ILoginView
 import com.luojilab.router.facade.annotation.RouteNode
-import io.reactivex.Observable
-import io.reactivex.Observer
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.user_activity_login.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
-import java.util.concurrent.TimeUnit
 
 /**
  * author : user_zf
@@ -46,46 +38,29 @@ class LoginActivity : BaseActivity<LoginPresenter>(), ILoginView {
                 ToastUtil.showToast("区号不能为空")
                 return@onClick
             }
+            showWaiting("正在登录...", false)
             presenter.login(etName.text.toString(), EncryptUtil.getMd5Value(etPassword.text.toString()), etRegionCode.text.toString())
         }
 
-        btnRxjava.onClick {
-            startInterval()
-        }
     }
 
     override fun onLoginSuccess(userBean: UserBean) {
         dismissWaiting()
-        tvResult.text = JsonUtil.writeEntity2JSON(userBean)
         LogUtil.json(JsonUtil.writeEntity2JSON(userBean))
+        //保存用户信息到SP
+        putSharedPreferencesValue("session", userBean.session, FILE_NAME_USER_INFO)
+        putSharedPreferencesValue("userName", userBean.nick_name, FILE_NAME_USER_INFO)
+        putSharedPreferencesValue("userId", userBean.user_id, FILE_NAME_USER_INFO)
+        putSharedPreferencesValue("phone", userBean.phone, FILE_NAME_USER_INFO)
+        putSharedPreferencesValue("email", userBean.email, FILE_NAME_USER_INFO)
+        putSharedPreferencesValue("avatar", userBean.avatar, FILE_NAME_USER_INFO)
+        //结束页面
+        finish()
     }
 
     override fun onLoginFaild(msg: String) {
         dismissWaiting()
         ToastUtil.showToast("登录失败：" + msg)
-    }
-
-    private fun startInterval() {
-        Observable.interval(2, TimeUnit.SECONDS)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object: Observer<Long> {
-                    override fun onComplete() {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
-
-                    override fun onSubscribe(d: Disposable) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
-
-                    override fun onNext(t: Long) {
-                        LogUtil.i("zf_tag", "now num = " + t)
-                    }
-
-                    override fun onError(e: Throwable) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
-                })
     }
 
 }
