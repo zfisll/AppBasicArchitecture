@@ -104,7 +104,7 @@ public abstract class UIBaseActivity<T extends BasePresenter> extends RxAppCompa
             presenter = (T) ClassUtil.getActualTypeClass(UIBaseActivity.this.getClass(), 0).newInstance();
             if (presenter != null) {
                 presenter.view = this;
-                presenter.provider = this;
+                presenter.activityProvider = this;
             }
         } catch (Exception e) {
             /* no-op */

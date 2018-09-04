@@ -312,6 +312,7 @@ public abstract class UIBaseFragment<T extends BasePresenter> extends RxFragment
             presenter = (T) ClassUtil.getActualTypeClass(UIBaseFragment.this.getClass(), 0).newInstance();
             if (presenter != null) {
                 presenter.view = this;
+                presenter.fragmentProvider = this;
             }
         } catch (Exception e) {
             LogUtil.e(e, e.getMessage());

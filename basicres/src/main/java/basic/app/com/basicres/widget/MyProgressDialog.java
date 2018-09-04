@@ -1,4 +1,4 @@
-package basic.app.com.basicres.view;
+package basic.app.com.basicres.widget;
 
 import android.app.Dialog;
 import android.content.Context;

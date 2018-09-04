@@ -12,4 +12,9 @@ interface IUserService {
      * 获取用户信息Fragment
      */
     fun getUserFragment(): Fragment
+
+    /**
+     * 获取新闻Fragment
+     */
+    fun getNewsFragment(): Fragment
 }

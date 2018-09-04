@@ -2,6 +2,11 @@
 <resources>
     <color name="ui_primary">#2B98EC</color>
     <color name="transparent">#00000000</color>
-    <color name="ui_text_3">#C2C3C8</color>
     <color name="ui_divider_primary">#DDDDDD</color>
+
+    <color name="ui_text_2">#2E333F</color>
+    <color name="ui_text_3">#C2C3C8</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="ui_content_pressed">#F2F2F2</color>
 </resources>

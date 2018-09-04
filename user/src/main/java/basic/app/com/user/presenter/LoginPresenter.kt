@@ -1,7 +1,6 @@
 package basic.app.com.user.presenter
 
 import basic.app.com.basiclib.baseclass.BasePresenter
-import basic.app.com.basiclib.utils.logger.LogUtil
 import basic.app.com.user.model.UserModel
 import basic.app.com.user.model.bean.UserBean
 import basic.app.com.user.view.ILoginView
@@ -25,7 +24,7 @@ class LoginPresenter : BasePresenter<ILoginView>() {
     fun login(name: String, password: String, regionCode: String) {
         mModel.login(name, password, regionCode)
                 .observeOn(AndroidSchedulers.mainThread())
-                .compose(provider.bindUntilEvent(ActivityEvent.DESTROY))
+                .compose(activityProvider.bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(object : Observer<UserBean> {
                     override fun onComplete() {
                         basic.app.com.basiclib.utils.logger.LogUtil.i("zf_tag", "login complete")

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<basic.app.com.basicres.view.PageStateView xmlns:android="http://schemas.android.com/apk/res/android"
+<basic.app.com.basicres.widget.PageStateView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/skin_pageStateView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"/>

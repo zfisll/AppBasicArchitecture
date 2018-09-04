@@ -10,6 +10,7 @@ import android.view.View
 import basic.app.com.R
 import basic.app.com.basiclib.baseclass.BasePresenter
 import basic.app.com.basiclib.widget.SimpleFragmentAdapter
+import basic.app.com.basicres.basicclass.AdvanceWebFragment
 import basic.app.com.basicres.basicclass.BaseActivity
 import basic.app.com.routerservice.ServiceConfig
 import basic.app.com.routerservice.service.IUserService
@@ -34,8 +35,8 @@ class MainActivity : BaseActivity<BasePresenter<*>>() {
         super.initLayout(view)
         val userService = Router.getInstance().getService(ServiceConfig.KEY_USER_SERVICE) as IUserService
         val fragmentAdapter = SimpleFragmentAdapter(supportFragmentManager, listOf(
-                userService.getUserFragment(),
-                userService.getUserFragment(),
+                userService.getNewsFragment(),
+                AdvanceWebFragment.newFragment("http://test-enstatine.bluestonehk.com/createAccount/transfer.html"),
                 userService.getUserFragment(),
                 userService.getUserFragment(),
                 userService.getUserFragment()

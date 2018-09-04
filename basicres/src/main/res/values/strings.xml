@@ -8,4 +8,21 @@
     <string name="loading_now">正在加载中...</string>
     <string name="loading_data">正在加载数据...</string>
     <string name="empty_default">暂无数据</string>
+
+    <string name="btn_cancel">取消</string>
+    <string name="btn_ok">确定</string>
+    <string name="ok_to_visit">确认访问</string>
+    <string name="ssl_error_for_other">您即将浏览的页面未通过安全检测，该页面并非我公司的官方页面，是否继续访问？</string>
+
+    <string name="image_source_selection">选择图片来源</string>
+    <array name="choose_image">
+        <item name="img_from_take_phone">拍照</item>
+        <item name="img_from_phone_gallery">从手机相册选择</item>
+    </array>
+    <array name="choose_file">
+        <item name="file_from_take_phone">拍照</item>
+        <item name="file_from_phone_gallery">从手机相册选择</item>
+        <item name="file_from_other">其它</item>
+    </array>
+    <string name="file_source_selection">选择文件来源</string>
 </resources>

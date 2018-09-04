@@ -1,4 +1,4 @@
-package basic.app.com.basicres.view;
+package basic.app.com.basicres.widget;
 
 import android.content.Context;
 import android.graphics.PorterDuff;

@@ -1,6 +1,12 @@
 package basic.app.com.basiclib.utils;
 
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Application;
+import android.content.Context;
+import android.content.ContextWrapper;
+
+import java.util.List;
 
 /**
  * author : user_zf
@@ -18,6 +24,42 @@ public class AppUtil {
 
     public static Application getApp() {
         return mApp;
+    }
+
+    public static boolean isContextInvalid(Context context) {
+        return context == null
+                || scanForActivity(context)==null
+                || scanForActivity(context).isFinishing();
+    }
+
+    public static Activity scanForActivity(Context cont) {
+        if (cont == null)
+            return null;
+        else if (cont instanceof Activity)
+            return (Activity)cont;
+        else if (cont instanceof ContextWrapper)
+            return scanForActivity(((ContextWrapper)cont).getBaseContext());
+
+        return null;
+    }
+
+    /**
+     * 获取进程名称
+     */
+    public static String getProcessName(Context context) {
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> runningApps = am.getRunningAppProcesses();
+        if (runningApps == null) {
+            return null;
+        }
+        for (ActivityManager.RunningAppProcessInfo proInfo : runningApps) {
+            if (proInfo.pid == android.os.Process.myPid()) {
+                if (proInfo.processName != null) {
+                    return proInfo.processName;
+                }
+            }
+        }
+        return "";
     }
 
 }

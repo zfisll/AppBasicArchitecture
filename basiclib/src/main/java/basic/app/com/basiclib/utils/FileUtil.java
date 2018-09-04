@@ -46,6 +46,14 @@ public class FileUtil {
     }
 
     /**
+     * 获取图片路径
+     * @param fileName 图片名称
+     */
+    public static String getImagePath(String fileName){
+        return getImageDir()+fileName;
+    }
+
+    /**
      * Get a file path from a Uri. This will get the the path for Storage Access
      * Framework Documents, as well as the _data field for the MediaStore
      * other file-based ContentProviders.

@@ -20,8 +20,8 @@ import basic.app.com.basiclib.utils.ResourceUtil;
 import basic.app.com.basiclib.utils.ViewUtil;
 import basic.app.com.basiclib.utils.logger.LogUtil;
 import basic.app.com.basicres.R;
-import basic.app.com.basicres.view.MyProgressDialog;
-import basic.app.com.basicres.view.PageStateView;
+import basic.app.com.basicres.widget.MyProgressDialog;
+import basic.app.com.basicres.widget.PageStateView;
 
 /**
  * author : user_zf

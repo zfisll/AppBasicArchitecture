@@ -60,5 +60,7 @@ ext {
             glide_annotation_processor      : "com.github.bumptech.glide:compiler:${versions.glide_version}",                    //Glide注解解析库
             glide_okhttp                    : "com.github.bumptech.glide:okhttp3-integration:${versions.glide_version}",         //Glide图片处理库
             multidex                        : 'com.android.support:multidex:1.0.3',                                              //分包，解决方法数超过64k的问题
+            base_rv_adapter                 : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42',                         //一个公共的rv Adapter库
+            takephoto                       : 'org.devio.takephoto:takephoto_library:4.1.0',                                     //拍照、图片选取库，h5的图片选取功能通过该库实现,github上是以com.jph开头，会报错，需要改成org.devio
     ]
 }
