@@ -12,6 +12,7 @@ import basic.app.com.basiclib.baseclass.BasePresenter
 import basic.app.com.basiclib.widget.SimpleFragmentAdapter
 import basic.app.com.basicres.basicclass.AdvanceWebFragment
 import basic.app.com.basicres.basicclass.BaseActivity
+import basic.app.com.basicres.basicclass.PdfFragment
 import basic.app.com.routerservice.ServiceConfig
 import basic.app.com.routerservice.service.IUserService
 import com.luojilab.component.componentlib.router.Router
@@ -36,8 +37,8 @@ class MainActivity : BaseActivity<BasePresenter<*>>() {
         val userService = Router.getInstance().getService(ServiceConfig.KEY_USER_SERVICE) as IUserService
         val fragmentAdapter = SimpleFragmentAdapter(supportFragmentManager, listOf(
                 userService.getNewsFragment(),
-                AdvanceWebFragment.newFragment("http://test-enstatine.bluestonehk.com/createAccount/transfer.html"),
-                userService.getUserFragment(),
+                AdvanceWebFragment.newInstance("http://test-enstatine.bluestonehk.com/createAccount/transfer.html"),
+                PdfFragment.newInstance("https://www.nasdaqtrader.com/content/AdministrationSupport/AgreementsData/subagreemstandalone.pdf"),
                 userService.getUserFragment(),
                 userService.getUserFragment()
 

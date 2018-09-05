@@ -46,11 +46,28 @@ public class FileUtil {
     }
 
     /**
+     * 获取应用存放图片的目录
+     */
+    private static String getPdfDir() {
+        return getBaseFilePath() + "pdf" + File.separator;
+    }
+
+    /**
      * 获取图片路径
+     *
      * @param fileName 图片名称
      */
-    public static String getImagePath(String fileName){
-        return getImageDir()+fileName;
+    public static String getImagePath(String fileName) {
+        return getImageDir() + fileName;
+    }
+
+    /**
+     * 获取pdf路径
+     *
+     * @param fileName pdf文件名称
+     */
+    public static String getPdfPath(String fileName) {
+        return getPdfDir() + fileName;
     }
 
     /**

@@ -96,7 +96,7 @@ public class AdvanceWebFragment extends BaseFragment implements AdvancedWebView.
 
     private boolean isNewWayChoosePhoto = false; //是否新的选择图片的方式
 
-    public static AdvanceWebFragment newFragment(String url) {
+    public static AdvanceWebFragment newInstance(String url) {
         AdvanceWebFragment fragment = new AdvanceWebFragment();
         Bundle args = new Bundle();
         args.putString(ARG_URL, url);

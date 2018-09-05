@@ -25,4 +25,7 @@
         <item name="file_from_other">其它</item>
     </array>
     <string name="file_source_selection">选择文件来源</string>
+
+    <string name="updateing_now">正在下载安装包...</string>
+    <string name="update_apk_title">Apk标题</string>
 </resources>
