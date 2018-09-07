@@ -1,20 +1,17 @@
 package basic.app.com.user.runalone.application;
 
 import android.app.Application;
-import android.support.annotation.Nullable;
+
+import basic.app.com.basiclib.utils.AppUtil;
 
 public class UserApplication extends Application {
 
-    private static Application mAppCotext;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mAppCotext = this;
+        //把Application保存在AppUtil中，全局可用
+        AppUtil.setApp(this);
     }
 
-    @Nullable
-    public static Application getAppContext() {
-        return mAppCotext;
-    }
 }

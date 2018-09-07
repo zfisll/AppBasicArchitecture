@@ -16,6 +16,7 @@ import basic.app.com.basicres.R2
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.github.barteksc.pdfviewer.PDFView
+import com.trello.rxlifecycle2.android.FragmentEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import java.io.File
 
@@ -75,6 +76,7 @@ class PdfFragment : BaseFragment<BasePresenter<*>>() {
         }
                 .download(url, pdfPath)
                 .observeOn(AndroidSchedulers.mainThread())
+                .compose(bindUntilEvent(FragmentEvent.DESTROY))
                 .subscribe {
                     //下载成功，展示pdf文件
                     dismissWaiting()
