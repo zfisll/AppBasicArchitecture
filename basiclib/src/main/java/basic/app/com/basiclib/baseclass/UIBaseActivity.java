@@ -101,8 +101,9 @@ public abstract class UIBaseActivity<T extends BasePresenter> extends RxAppCompa
     @SuppressWarnings("unchecked")
     private void initPresenter() {
         try {
-            presenter = (T) ClassUtil.getActualTypeClass(UIBaseActivity.this.getClass(), 0).newInstance();
-            if (presenter != null) {
+            Class clazz = ClassUtil.getActualTypeClass(UIBaseActivity.this.getClass(), 0);
+            if (clazz != null) {
+                presenter = (T) clazz.newInstance();
                 presenter.view = this;
                 presenter.activityProvider = this;
             }

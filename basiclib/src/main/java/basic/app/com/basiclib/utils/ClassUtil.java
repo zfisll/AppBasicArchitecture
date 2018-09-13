@@ -18,7 +18,10 @@ public class ClassUtil {
      */
     public static Class getActualTypeClass(Class entity, int index) {
         ParameterizedType type = (ParameterizedType) entity.getGenericSuperclass();
-        return (Class) type.getActualTypeArguments()[index];
+        if (type.getActualTypeArguments()[index] instanceof Class) {
+            return (Class) type.getActualTypeArguments()[index];
+        }
+        return null;
     }
 
 

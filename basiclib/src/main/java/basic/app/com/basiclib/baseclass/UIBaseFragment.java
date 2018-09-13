@@ -309,8 +309,9 @@ public abstract class UIBaseFragment<T extends BasePresenter> extends RxFragment
     @SuppressWarnings("unchecked")
     public void initPresenter() {
         try {
-            presenter = (T) ClassUtil.getActualTypeClass(UIBaseFragment.this.getClass(), 0).newInstance();
-            if (presenter != null) {
+            Class clazz = ClassUtil.getActualTypeClass(UIBaseFragment.this.getClass(), 0);
+            if (clazz != null) {
+                presenter = (T) clazz.newInstance();
                 presenter.view = this;
                 presenter.fragmentProvider = this;
             }

@@ -18,6 +18,9 @@ const val FILE_NAME_DEFAULT = FILE_NAME_COMMON
  */
 fun android.content.Context.putSharedPreferencesValue(key: String, value: Any?, fileName: String = FILE_NAME_DEFAULT) {
     val sp: SharedPreferences = getSharedPreferences(fileName, Context.MODE_PRIVATE)
+    if (value == null) { //此处需要判空，如果为空，不能往下走，不然is Int?处会崩溃
+        return
+    }
     when (value) {
         is Int? -> sp.edit().putInt(key, value as Int).apply()
         is Long? -> sp.edit().putLong(key, value as Long).apply()
