@@ -1,8 +1,8 @@
 package basic.app.com.basiclib.utils;
 
-import android.database.Cursor;
-
 import java.io.Closeable;
+
+import basic.app.com.basiclib.utils.logger.LogUtil;
 
 /**
  * author : user_zf
@@ -11,6 +11,11 @@ import java.io.Closeable;
  */
 public class Closer {
 
+    /**
+     * 关闭stream对象
+     *
+     * @param stream 可关闭的对象
+     */
     public static void close(Closeable stream) {
         if (stream == null) {
             return;
@@ -18,17 +23,7 @@ public class Closer {
         try {
             stream.close();
         } catch (Exception e) {
-        }
-
-    }
-
-    public static void close(Cursor stream) {
-        if (stream == null) {
-            return;
-        }
-        try {
-            stream.close();
-        } catch (Exception e) {
+            LogUtil.e(e.getMessage());
         }
 
     }
